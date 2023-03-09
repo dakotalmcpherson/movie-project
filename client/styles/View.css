@@ -1,0 +1,5 @@
+.view {
+  width: 75vw;
+  height: 85vh;
+  overflow-y: scroll;
+}

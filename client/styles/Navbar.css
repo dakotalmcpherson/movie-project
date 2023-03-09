@@ -1,0 +1,41 @@
+.mainNav {
+  width: 100vw;
+  height: 10vh;
+  background-color: #fa4147;
+  margin-left: -8px;
+  margin-top: -10px;
+
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.mainNav p {
+  color: white;
+  margin-right: 2em;
+  font-weight: bold;
+  font-size: larger;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.nav-button {
+  margin-right: 4em;
+  padding: 0.8em 2em;
+
+  border: solid 0.2em white;
+  border-radius: 0.4em;
+  color: white;
+  background-color: #c43136;
+
+  transition: all 0.6s ease-in-out;
+}
+
+.nav-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
