@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import SearchView from './views/SearchView.jsx';
 import MyListView from './views/MyListView.jsx';
+import WatchedView from './views/WatchedView.jsx';
 import BitView from './views/BitView.jsx';
 import Navbar from './Navbar.jsx';
 import Menu from './Menu.jsx';
@@ -18,15 +19,17 @@ const mainStyles = {
 
 const subStyles = {
   display: 'flex',
-  flexDirection: 'row'
+  flexDirection: 'row',
 }
 
 
 function App(props) {
+  console.log('test')
   const searchText = useSelector((state) => state.main.searchText);
   const view = useSelector((state) => state.main.view);
   const movies = useSelector((state) => state.main.movieList);
   const person = useSelector((state) => state.main.user);
+
 
   const dispatch = useDispatch();
 
@@ -34,7 +37,9 @@ function App(props) {
     fetch('/checklogin')
       .then(response =>  response.json())
       .then((user) => {
-        if (user) {
+        if (user != person) {
+          console.log(person)
+          console.log(user)
           dispatch(updateUser(user))
         }
       })
@@ -60,6 +65,12 @@ function App(props) {
     if (view === 'myList') {
       return(
         <MyListView list={person.movieList}/>
+      )
+    }
+
+    if (view === 'watched') {
+      return (
+        <WatchedView list={person.watched}/>
       )
     }
   }

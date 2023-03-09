@@ -1,0 +1,51 @@
+.search-bar {
+
+  margin-top: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  background-color: white;
+  width: 40%;
+  height: 3em;
+
+  border-radius: 3em;
+  
+  box-shadow: 0.1em 0.1em 0.3em black;
+}
+
+.search-bar input {
+  width: 50%;
+  height: 60%;
+  border-radius: 1em;
+  text-indent: 1em;
+  border: none;
+}
+
+.search-bar input:active {
+  border: none;
+
+}
+
+button {
+
+  font-size: 0.8em;
+  
+  width: fit-content;
+
+  padding: 0.5em 2em;
+  
+  border-radius: 30em;
+
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  border: solid 0.2em white;
+
+  transition: all 0.1s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}

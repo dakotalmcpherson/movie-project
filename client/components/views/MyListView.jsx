@@ -8,32 +8,47 @@ import SearchBar from '../SearchBar.jsx'
 import styles from '../../styles/View.css'
 
 const updateSearch = createAction('main/updateSearch')
-const searchMovies = createAction('main/searchMovies')
+const updateRandom = createAction('main/updateRandom')
 
 
 // function for creating fetch url from searchText in state
 
 
 function MyListView(props) {
-  const searchText = useSelector((state) => state.main.searchText);
-  const movies = useSelector((state) => state.main.movieList);
   const view = useSelector((state) => state.main.view);
+  const random = useSelector((state) => state.main.random);
   const dispatch = useDispatch();
 
-  const movieElements = props.list.map(movie => {
-    return(
-      <div className='movie-container'>
-        <MovieCard title={movie.title} release_date={movie.release_date} imgUrl={movie.poster_path} />
+  function handleClick(setting) {
+    if (setting == 'random') {
+      dispatch(updateRandom([props.list[Math.floor(Math.random() * props.list.length)]]))
+    } else {
+      dispatch(updateRandom(''))
+    }
+  }
+
+  function chooseRender(random) {
+    if (random) {
+      return(
+        <div className='view'>
+        <h1>My List</h1>
+        <button onClick={(e) => handleClick('reset')}>Reset</button>
+          <MovieContainer list={random} view={view}/>
       </div>
-    )
-  })
+      )
+    } else {
+      return(
+        <div className='view'>
+        <h1>My List</h1>
+        <button onClick={(e) => handleClick('random')}>Random Select</button>
+          <MovieContainer list={props.list} view={view}/>
+      </div>
+      )
+    }
+  }
 
   return(
-    <div className='view'>
-      <h1>My List</h1>
-        <SearchBar />
-        <MovieContainer list={props.list} view={view}/>
-    </div>
+   chooseRender(random)
   )
 }
 

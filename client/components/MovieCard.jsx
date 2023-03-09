@@ -45,21 +45,32 @@ function MovieCard(props) {
   }
 
   function chooseButtons(view) {
-    const noButton = user.movieList.some(mov => mov.id == id)
+
+    if (user.username) {
+      const inList = user.movieList.some(mov => mov.id == id)
+      const watched = user.watched.some(mov => mov.id == id)
+    
 
     if (view == 'search') {
-      if (!noButton) {
+      if (!inList && !watched) {
         return(
           <div>
             <button onClick={(e) => addMovie(movie, e)}>Add Movie</button>
           </div>
-      )} else {
-        return(
-          <div>
-            <button disabled={true}>Already Added</button>
-          </div>
+      )} 
+    
+      if (watched) {
+        return(<div>
+            <button disabled={true}>Already Watched</button>
+        </div>
         )
       }
+        return(
+          <div>
+            <button disabled={true}>Already in List</button>
+          </div>
+        )
+  
     }
 
     if (view == 'myList') {
@@ -69,6 +80,16 @@ function MovieCard(props) {
         </div>
       )
     }
+    }
+    
+    if (!user.username) {
+      return(
+        <div>
+          <button disabled={true}>Login to add movie</button>
+        </div>
+      )
+    }
+    
 
   }
 

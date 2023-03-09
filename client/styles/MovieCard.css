@@ -32,3 +32,16 @@
 img {
   max-width: 80%;
 }
+
+.movie-card button {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.movie-card button:disabled {
+  transform: none;
+  color: red;
+  background-color: white;
+  cursor: auto;
+  border: 0.1em solid red;
+}

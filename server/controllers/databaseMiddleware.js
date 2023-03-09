@@ -52,7 +52,7 @@ databaseMiddleware.addMovie = (req, res, next) => {
 databaseMiddleware.deleteMovie = (req, res, next) => {
   const movie = req.body;
   const cookieId = req.cookies.SSID;
-  models.User.findByIdAndUpdate(cookieId, {$pull: {movieList: { id: movie.id }}})
+  models.User.findByIdAndUpdate(cookieId, {$pull: {movieList: { id: movie.id }}, $push: {watched: {...movie}}})
     .then((result) => {
       res.locals.updatedUser = result;
       return next()

@@ -4,7 +4,8 @@ const initialState = {
   user: {},
   view: 'search',
   movieList: [],
-  searchText: ''
+  searchText: '',
+  random: ''
 };
 
 const mainSlice = createSlice({
@@ -19,10 +20,13 @@ const mainSlice = createSlice({
       state.searchText = action.payload;
     },
     updateUser: (state, action) => {
-      state.user = action.payload;
+        state.user = action.payload;
     },
     updateView: (state, action) => {
       state.view = action.payload;
+    },
+    updateRandom: (state, action) => {
+      state.random = action.payload;
     }
   }
 })

@@ -2,7 +2,15 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  overflow-y: scroll;
+  
+
+  margin-top: 3em;
 }
+
+.movie-container::-webkit-scrollbar{
+    display: none;
+  }
 
 .movie-heading {
   display: flex;

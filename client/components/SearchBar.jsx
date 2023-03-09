@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { createAction } from '@reduxjs/toolkit';
 import { useSelector, useDispatch } from 'react-redux'
 
+import styles from '../styles/SearchBar.css'
+
 const updateSearch = createAction('main/updateSearch')
 const searchMovies = createAction('main/searchMovies')
 
@@ -19,8 +21,8 @@ function SearchBar(props) {
   const dispatch = useDispatch();
 
   return(
-    <div>
-      <input type="text" value={searchText} onChange={(e) => dispatch(updateSearch(e.target.value))}></input>
+    <div className='search-bar'>
+      <input type="text" value={searchText} onChange={(e) => dispatch(updateSearch(e.target.value))} placeholder='Search for movie by title...'></input>
       <button 
       onClick={() =>  {
         fetch(createSearchText(searchText))
@@ -31,7 +33,7 @@ function SearchBar(props) {
           dispatch(searchMovies(response.results));
         })
         }}>
-        Update List</button>
+        Search</button>
   </div>
   )
   

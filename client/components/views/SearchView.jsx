@@ -28,7 +28,6 @@ function SearchView(props) {
 
   return(
     <div className='view'>
-      <h1>{searchText}</h1>
         <SearchBar />
         <MovieContainer list={props.list} view={view}/>
     </div>
